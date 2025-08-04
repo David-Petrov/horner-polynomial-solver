@@ -84,6 +84,10 @@ impl std::fmt::Display for Polynomial {
         f.write_fmt(format_args!("{}", self.coefficients[0]))?;
         
         for i in 1..self.coefficients.len() {
+            if self.coefficients[i] == 0 {
+                continue;
+            }
+
             f.write_fmt(format_args!(
                 " {} {}x^{}", 
                     if self.coefficients[i] < 0 { "-" } else { "+" }, 
